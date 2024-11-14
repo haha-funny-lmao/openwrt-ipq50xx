@@ -1,0 +1,42 @@
+--- a/arch/arm64/boot/dts/qcom/ipq5018.dtsi
++++ b/arch/arm64/boot/dts/qcom/ipq5018.dtsi
+@@ -77,8 +77,37 @@
+ 		#size-cells = <2>;
+ 		ranges;
+ 
+-		tz: tz@4ac00000 {
+-			reg = <0x0 0x4ac00000 0x0 0x00400000>;
++		tzapp:tzapp@4a400000 {	/* TZAPPS */
++			no-map;
++		};
++
++		tzapp_data:tzapp_data@4a700000 {  /* TZAPP_DATA */
++			compatible = "shared-dma-pool";
++			no-map;
++		};
++
++		uboot@4a800000 {
++			reg = <0x0 0x4a800000 0x0 0x00200000>;
++			no-map;
++		};
++
++		sbl@4aa00000 {
++			reg = <0x0 0x4aa00000 0x0 0x00100000>;
++			no-map;
++		};
++
++		smem_region:smem@4ab00000 {
++			reg = <0x0 0x4ab00000 0x0 0x00100000>;
++			no-map;
++		};
++
++		tz@4ac00000 {	/* TZ */
++			reg = <0x0 0x4ac00000 0x0 0x00200000>;
++			no-map;
++		};
++
++		bt_region: bt@7000000 {
++			reg = <0x0 0x07000000 0x0 0x58000>;
+ 			no-map;
+ 		};
+ 	};
